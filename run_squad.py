@@ -291,9 +291,11 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
             tokens.append("[SEP]")
             segment_ids.append(0)
 
-            print("doc span length is: {}".format(doc_span.length))
+            # print("doc span length is: {}".format(doc_span.length))
 
             # for i in range(doc_span.length):
+            print("to pad length is {}".format(max_seq_length - len(tokens) - 1))
+            
             for i in range(max_seq_length - len(tokens) - 1):
                 split_token_index = doc_span.start + i
                 token_to_orig_map[len(tokens)] = tok_to_orig_index[split_token_index]
