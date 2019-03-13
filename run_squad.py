@@ -269,9 +269,9 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 segment_ids.append(0)
             #added
 
-            amount_to_pad = 64 - len(query_tokens)
-            # while(amount_to_pad != 0):
-            for i in range(amount_to_pad):
+            amount_to_pad = 60 - len(query_tokens)
+            while(amount_to_pad > 0):
+            # for i in range(amount_to_pad):
                 tokens.append("[PAD]")
                 segment_ids.append(0)
 
