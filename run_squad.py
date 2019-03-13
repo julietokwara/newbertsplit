@@ -274,6 +274,7 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
             # for i in range(amount_to_pad):
                 tokens.append("[PAD]")
                 segment_ids.append(0)
+                amount_to_pad -= 1
 
             # print("Tokens length is " + len(tokens))
             # print("Tokens are:")
