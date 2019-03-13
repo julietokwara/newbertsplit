@@ -808,7 +808,8 @@ def get_max_question_length(tokenizer):
                         max_q = question_length
                         mquestion = query_tokens
 
-    print("The longest question is " + mquestion)
+    print("The longest question is " )
+    print(mquestion)
     print("The length of that question is " + str(max_q))
 
 
