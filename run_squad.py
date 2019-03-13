@@ -765,7 +765,7 @@ def _compute_softmax(scores):
 
 
 
-def get_max_question_length():
+def get_max_question_length(tokenizer):
     """Read a SQuAD json file into a list of SquadExample."""
     files = ["train-v2.0.json", "dev-v2.0.json","test-v2.0.json"]
 
@@ -801,7 +801,7 @@ def get_max_question_length():
                     qas_id = qa["id"]
                     question_text = qa["question"]
 
-                    tokenizer = BertTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
+                    #tokenizer = BertTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
                     query_tokens = tokenizer.tokenize(example.question_text)
                     question_length = len(query_tokens)
                     if(question_length > max_q):
@@ -1008,7 +1008,7 @@ def main():
             with open(cached_train_features_file, "rb") as reader:
                 train_features = pickle.load(reader)
         except:
-            get_max_question_length()
+            get_max_question_length(tokenizer)
             train_features = convert_examples_to_features(
                 examples=train_examples,
                 tokenizer=tokenizer,
