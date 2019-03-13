@@ -296,6 +296,7 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
             segment_ids.append(1)
 
             input_ids = tokenizer.convert_tokens_to_ids(tokens)
+            print("initial length of input_ids is {}".format(len(input_ids)))
             # The mask has 1 for real tokens and 0 for padding tokens. Only real
             # tokens are attended to.
             input_mask = [1] * len(input_ids)
@@ -306,8 +307,8 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 input_mask.append(0)
                 segment_ids.append(0)
 
-            print(len(input_ids))
-            print(max_seq_length)
+            print("final length of input id {}".format(len(input_ids)))
+            print("max length is {}".format(max_seq_length))
             assert len(input_ids) == max_seq_length
             assert len(input_mask) == max_seq_length
             assert len(segment_ids) == max_seq_length
