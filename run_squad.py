@@ -778,7 +778,7 @@ def get_max_question_length(tokenizer):
                 return True
             return False
         max_q = float("-inf")
-        mquestion = ""
+        mquestion = []
         examples = []
         for entry in input_data:
             for paragraph in entry["paragraphs"]:
@@ -802,11 +802,11 @@ def get_max_question_length(tokenizer):
                     question_text = qa["question"]
 
                     #tokenizer = BertTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
-                    query_tokens = tokenizer.tokenize(example.question_text)
+                    query_tokens = tokenizer.tokenize(question_text)
                     question_length = len(query_tokens)
                     if(question_length > max_q):
-                        max_q = query_tokens
-                        mquestion = question_text
+                        max_q = question_length
+                        mquestion = query_tokens
 
     print("The longest question is " + mquestion)
     print("The length of that question is " + str(max_q))
