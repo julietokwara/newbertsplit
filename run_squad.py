@@ -212,6 +212,7 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
 
         if len(query_tokens) > max_query_length:
             query_tokens = query_tokens[0:max_query_length]
+        print("the length of query_tokens is: {}".format(len(query_tokens)))  #ADDED
 
         tok_to_orig_index = []
         orig_to_tok_index = []
