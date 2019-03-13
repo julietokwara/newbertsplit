@@ -267,6 +267,23 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
             for token in query_tokens:
                 tokens.append(token)
                 segment_ids.append(0)
+            #added
+
+            amount_to_pad = 60 - len(query_tokens)
+            while(amount_to_pad != 0):
+                tokens.append("[PAD]")
+                segment_ids.append(0)
+
+            print("Tokens length is " + len(tokens))
+            print("Tokens are:")
+            print(tokens)
+
+
+
+
+
+
+
             tokens.append("[SEP]")
             segment_ids.append(0)
 
@@ -283,7 +300,6 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
             segment_ids.append(1)
 
             input_ids = tokenizer.convert_tokens_to_ids(tokens)
-
             # The mask has 1 for real tokens and 0 for padding tokens. Only real
             # tokens are attended to.
             input_mask = [1] * len(input_ids)

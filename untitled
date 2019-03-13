@@ -1,0 +1,7 @@
+
+
+extendedTensor = torch.randn((3, 64, 5))
+
+dummy = extendedTensor[:][1, 61][:]
+print("dummy size is ")
+print(dummy.shape)

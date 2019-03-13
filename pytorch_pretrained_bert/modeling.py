@@ -1178,7 +1178,23 @@ class BertForQuestionAnswering(BertPreTrainedModel):
 
     def forward(self, input_ids, token_type_ids=None, attention_mask=None, start_positions=None, end_positions=None):
         sequence_output, _ = self.bert(input_ids, token_type_ids, attention_mask, output_all_encoded_layers=False)
-        logits = self.qa_outputs(sequence_output)
+        max_context_len = 382
+        query = sequence_output[:,1:61,:]
+        print("Sequence shape is ")
+        print(sequence_output.shape)
+        print("Query shape is ")
+        print(query.shape)
+        context = sequence_output[:,62:-1,:]
+        print("context length is ")
+        print(context.length)
+        #difference = max_context_len - 
+
+
+
+
+
+
+        logits = self.qa_outputs(context)
         start_logits, end_logits = logits.split(1, dim=-1)
         start_logits = start_logits.squeeze(-1)
         end_logits = end_logits.squeeze(-1)

@@ -800,10 +800,11 @@ def get_max_question_length(tokenizer):
                 for qa in paragraph["qas"]:
                     qas_id = qa["id"]
                     question_text = qa["question"]
+                    print("no")
 
                     #tokenizer = BertTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
                     query_tokens = tokenizer.tokenize(question_text)
-                    question_length = len(query_tokens)
+                    question_length = len(query_tokens) 
                     if(question_length > max_q):
                         max_q = query_tokens
                         mquestion = question_text
