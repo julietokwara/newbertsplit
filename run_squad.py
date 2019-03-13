@@ -336,7 +336,7 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 input_mask.append(0)
                 segment_ids.append(0)
 
-            # print("final length of input id {}".format(len(input_ids)))
+            print("final length of input id {}".format(len(input_ids)))
             # print("max length is {}".format(max_seq_length))
             assert len(input_ids) == max_seq_length
             assert len(input_mask) == max_seq_length
