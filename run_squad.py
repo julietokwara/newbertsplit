@@ -269,7 +269,7 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 segment_ids.append(0)
             #added
 
-            amount_to_pad = 60 - len(query_tokens)
+            amount_to_pad = max_query_length - len(query_tokens)
             while(amount_to_pad > 0):
             # for i in range(amount_to_pad):
                 tokens.append("[PAD]")
@@ -845,7 +845,7 @@ def main():
                              "longer than this will be truncated, and sequences shorter than this will be padded.")
     parser.add_argument("--doc_stride", default=128, type=int,
                         help="When splitting up a long document into chunks, how much stride to take between chunks.")
-    parser.add_argument("--max_query_length", default=60, type=int,
+    parser.add_argument("--max_query_length", default=64, type=int,
                         help="The maximum number of tokens for the question. Questions longer than this will "
                              "be truncated to this length.")
     parser.add_argument("--do_train", action='store_true', help="Whether to run training.")
