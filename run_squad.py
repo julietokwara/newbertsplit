@@ -224,6 +224,8 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 tok_to_orig_index.append(i)
                 all_doc_tokens.append(sub_token)
 
+        print("len of all doc tokens is: {}".format(len(all_doc_tokens)))
+
         tok_start_position = None
         tok_end_position = None
         if is_training and example.is_impossible:
@@ -258,7 +260,7 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 break
             start_offset += min(length, doc_stride)
 
-        print("len of doc span is:{}".format(len(doc_spans)))
+        print("len of doc span is: {}".format(len(doc_spans)))
         for (doc_span_index, doc_span) in enumerate(doc_spans):
             tokens = []
             token_to_orig_map = {}
@@ -272,6 +274,7 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
             #added
 
             print("tokens is: {}".format(tokens))
+            print("len of tokens is: {}".format(len(tokens)))
             amount_to_pad = max_query_length - len(query_tokens)
             while(amount_to_pad > 0):
             # for i in range(amount_to_pad):
@@ -283,6 +286,7 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
             # print("Tokens are:")
             # print(tokens)
             print("tokens after (but before adding sep): {}".format(tokens))
+            print("len of tokens after is: {}".format(len(tokens)))
 
             tokens.append("[SEP]")
             segment_ids.append(0)
