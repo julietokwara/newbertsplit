@@ -269,20 +269,15 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 segment_ids.append(0)
             #added
 
-            amount_to_pad = 60 - len(query_tokens)
-            while(amount_to_pad != 0):
+            amount_to_pad = 64 - len(query_tokens)
+            # while(amount_to_pad != 0):
+            for i in range(amount_to_pad):
                 tokens.append("[PAD]")
                 segment_ids.append(0)
 
-            print("Tokens length is " + len(tokens))
-            print("Tokens are:")
-            print(tokens)
-
-
-
-
-
-
+            # print("Tokens length is " + len(tokens))
+            # print("Tokens are:")
+            # print(tokens)
 
             tokens.append("[SEP]")
             segment_ids.append(0)
@@ -824,16 +819,9 @@ def get_max_question_length(tokenizer):
                         max_q = question_length
                         mquestion = query_tokens
 
-        print("The longest question is " )
-        print(mquestion)
-        print("The length of that question is " + str(max_q))
-
-
-
-
-
-
-
+        # print("The longest question is " )
+        # print(mquestion)
+        # print("The length of that question is " + str(max_q))
 
 
 def main():
@@ -1025,7 +1013,7 @@ def main():
             with open(cached_train_features_file, "rb") as reader:
                 train_features = pickle.load(reader)
         except:
-            get_max_question_length(tokenizer)
+            # get_max_question_length(tokenizer)
             train_features = convert_examples_to_features(
                 examples=train_examples,
                 tokenizer=tokenizer,
