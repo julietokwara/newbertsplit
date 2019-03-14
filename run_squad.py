@@ -319,7 +319,12 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 segment_ids.append(1)
                 input_mask.append(1)
 
+            #truncate tokens before sep
+            if len(tokens) > max_seq_length:
+                tokens = tokens[:max_seq_length]
+
             tokens.append("[SEP]")
+            print("the length of tokens is: {}".format(len(tokens)))
             segment_ids.append(1)
             input_mask.append(1)
 
