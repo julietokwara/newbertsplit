@@ -1185,8 +1185,8 @@ class BertForQuestionAnswering(BertPreTrainedModel):
         print("Query shape is ")
         print(query.shape)
         context = sequence_output[:,66:-1,:]
-        print("context length is ")
-        print(context.length)
+        print("context shape is ")
+        print(context.shape)
         #difference = max_context_len - 
 
 
