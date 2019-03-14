@@ -208,7 +208,7 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
 
     features = []
     for (example_index, example) in enumerate(examples):
-        print("Ex is: {}".format(example))
+        # print("Ex is: {}".format(example))
         query_tokens = tokenizer.tokenize(example.question_text)
 
         if len(query_tokens) > max_query_length:
@@ -324,10 +324,10 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 tokens = tokens[:max_seq_length]
                 # segment_ids = [:max_seq_length]
                 # input_mask = input_mask[:max_seq_length]
-            print("segment ids is: {}".format(len(segment_ids)))
+            # print("segment ids is: {}".format(len(segment_ids)))
 
             tokens.append("[SEP]")
-            print("the length of tokens is: {}".format(len(tokens)))
+            # print("the length of tokens is: {}".format(len(tokens)))
             segment_ids.append(1)
             input_mask.append(1)
 
@@ -345,7 +345,7 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 input_mask.append(0)
                 segment_ids.append(0)
 
-            print("final length of input id {}".format(len(input_ids)))
+            # print("final length of input id {}".format(len(input_ids)))
             # print("max length is {}".format(max_seq_length))
             assert len(input_ids) == max_seq_length
             assert len(input_mask) == max_seq_length
