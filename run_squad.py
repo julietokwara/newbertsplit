@@ -324,7 +324,7 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 tokens = tokens[:max_seq_length]
                 # segment_ids = [:max_seq_length]
                 # input_mask = input_mask[:max_seq_length]
-            print("segment ids is: {}".format(segment_ids))
+            print("segment ids is: {}".format(len(segment_ids)))
 
             tokens.append("[SEP]")
             print("the length of tokens is: {}".format(len(tokens)))
