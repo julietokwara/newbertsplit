@@ -1180,13 +1180,13 @@ class BertForQuestionAnswering(BertPreTrainedModel):
         sequence_output, _ = self.bert(input_ids, token_type_ids, attention_mask, output_all_encoded_layers=False)
         # max_context_len = 382
         query = sequence_output[:,1:65,:]
-        print("Sequence shape is ")
-        print(sequence_output.shape)
-        print("Query shape is ")
-        print(query.shape)
+        # print("Sequence shape is ")
+        # print(sequence_output.shape)
+        # print("Query shape is ")
+        # print(query.shape)
         context = sequence_output[:,66:-1,:]
-        print("context shape is ")
-        print(context.shape)
+        # print("context shape is ")
+        # print(context.shape)
         #difference = max_context_len - 
 
 
